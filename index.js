@@ -21,9 +21,9 @@ if (process.env.NODE_ENV === 'production') {
 
 // app.use(express.static("public"));
 
-app.get("/", (req, res, next) => {
-  res.send("API is working properly");
-});
+// app.get("/", (req, res, next) => {
+//   res.send("API is working properly");
+// });
 
 app.get("/api", cors(), async (req, res, next) => {
 
