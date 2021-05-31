@@ -12,19 +12,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// view engine setup
-// app.set("views", path.join(__dirname, "views"));
-// app.set("view engine", "jade");
-
-// if (process.env.NODE_ENV === "production") {
-//   app.use(express.static("client/build"));
-// }
-
-// app.use(express.static("public"));
-
-// app.get("/", (req, res, next) => {
-//   res.send("API is working properly");
-// });
+app.use(express.static(path.resolve(__dirname, "../client/build")));
 
 app.get("/api", cors(), async (req, res, next) => {
   try {
@@ -54,10 +42,8 @@ app.use((err, req, res, next) => {
   res.render("error");
 });
 
-app.use(express.static(path.join(__dirname, '../build')));
-
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../build'))
+    res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
 });
 
 const port = process.env.PORT || 8000;
