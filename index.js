@@ -12,7 +12,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use(express.static(path.resolve(__dirname, "../client/build")));
+app.use(express.static(path.resolve(__dirname, "./client/public")));
 
 app.get("/api", cors(), async (req, res, next) => {
   try {
@@ -43,7 +43,7 @@ app.use((err, req, res, next) => {
 });
 
 app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
+    res.sendFile(path.resolve(__dirname, './client/public', 'index.html'));
 });
 
 const port = process.env.PORT || 8000;
