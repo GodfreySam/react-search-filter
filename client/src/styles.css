@@ -1,0 +1,23 @@
+html, body {
+  box-sizing: border-box;
+  background: gainsboro;
+  text-align: center;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+ul li {
+  list-style: none;
+  font-weight: 600;
+}
+
+.game-header {
+  display: flex;
+  flex-direction: column;
+}
+
+img {
+  width: 30rem;
+  height: auto;
+  margin: 0;
+  padding: 1rem;
+}

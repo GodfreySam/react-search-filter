@@ -1,0 +1,30 @@
+{
+  "name": "react-search-filter",
+  "version": "1.0.0",
+  "engines": {
+    "node": "14.15.1"
+  },
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "build": "cd client && npm run buld",
+    "install-client": "cd client && npm install",
+    "client": "cd client && npm start",
+    "heroku-postbuild": "npm run install-client && npm run build"
+  },
+  "author": "Godfrey Samuel",
+  "license": "ISC",
+  "homepage": "",
+  "dependencies": {
+    "axios": "^0.21.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
+}
