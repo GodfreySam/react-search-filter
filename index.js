@@ -1,9 +1,7 @@
-const createError = require("http-errors");
 const express = require("express");
 const path = require("path");
 const axios = require("axios");
 const cors = require("cors");
-
 
 require("dotenv").config();
 
@@ -12,7 +10,8 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use(express.static(path.resolve(__dirname, "./client/public")));
+// Setup static directory to serve
+app.use(express.static(path.resolve('client', 'build')));
 
 app.get("/api", cors(), async (req, res, next) => {
   try {
@@ -27,23 +26,12 @@ app.get("/api", cors(), async (req, res, next) => {
     return res.json({ data: response.data });
   } catch (err) {
     console.log(err);
+      return res.status(500).send("Error.");
   }
 });
 
-// catch 404 and forward to error handler
-app.use((req, res, next) => next(createError(404)));
-//set locals to only provide error in development
-app.use((err, req, res, next) => {
-  res.locals.message = err.message;
-  res.locals.error = req.app.get("env") === "development" ? err : {};
-
-  // render the error page
-  res.status(err.status || 500);
-  res.render("error");
-});
-
 app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, './client/public', 'index.html'));
+    res.sendFile(path.resolve('client', 'build', 'index.html'));
 });
 
 const port = process.env.PORT || 8000;
