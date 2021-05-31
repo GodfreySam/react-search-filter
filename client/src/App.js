@@ -47,7 +47,7 @@ function App() {
 
   // Similar to componentDidMount and componentDidUpdate:
   useEffect(() => {
-    fetch("http://localhost:8000/api", { crossdomain: true })
+    fetch("/api", { crossdomain: true })
       .then((response) => response.json())
       .then((data) => {
         setAllGame(data.data);
